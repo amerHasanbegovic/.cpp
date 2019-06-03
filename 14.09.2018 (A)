@@ -1,5 +1,5 @@
 #include<iostream>
-#include<tuple>
+//#include<tuple>
 using namespace std;
 
 const char* not_set = "NEMA_VRIJEDNOST";
