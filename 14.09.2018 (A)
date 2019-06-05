@@ -166,12 +166,12 @@ struct Nastavnik {
 			
 			if (_teme[i] != nullptr && strcmp(_teme[i]->_brojIndeksa, brojIndeksa) == 0)
 				if (_teme[i]->_trenutnoPoglavlja < min_polgavlja)
-					return false;
+					return nullptr;
 			
 			float prosjek = 0;	
 			for (int j = 0; j < _teme[i]->_trenutnoPoglavlja; j++) {
 				if (strlen(_teme[i]->_poglavljaRada[j]._sadrzaj) < min_karaktera_po_poglavlju || _teme[i]->_poglavljaRada[j]._prihvaceno == false)
-					return false;
+					return nullptr;
 
 				prosjek += _teme[i]->_poglavljaRada[j]._ocjena;
 			}
