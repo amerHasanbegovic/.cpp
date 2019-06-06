@@ -327,6 +327,8 @@ int main() {
 	if (indeksStudenta != nullptr)
 		cout << crt << indeksStudenta << " " << prosjekMentora << " " << brojPoglavlja << crt;
 
+
+	multimedijalni.Dealociraj(); podrsa_operaterima.Dealociraj(); analiza_sigurnosti.Dealociraj(); kriptografija.Dealociraj();
 	for (int i = 0; i < max; i++)
 		nastavnici[i].Dealociraj();
 	delete[]nastavnici;
