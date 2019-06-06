@@ -1,5 +1,5 @@
 #include<iostream>
-//#include<tuple>
+#include<tuple>
 using namespace std;
 
 const char* not_set = "NEMA_VRIJEDNOST";
@@ -186,48 +186,48 @@ struct Nastavnik {
 	}
 };
 
-//tuple<char*, float, float> PronadjiNajStudenta(Nastavnik* nastavnici[], int brojNastavnika, int minOcjena) {
-//	float prosjekStudenta = 0;
-//	float prosjekMentora = 0;
-//	char* indeksStudenta = nullptr;
-//
-//	Nastavnik* mentor = nullptr;
-//
-//	for (int i = 0; i < brojNastavnika; i++) {
-//
-//		float sumaSvihOcjenaZavrsnihRadova = 0;
-//		int brojZavrsnihRadova = 0;
-//
-//		for (int j = 0; j < max_zavrsnih; j++) {
-//			if (nastavnici[i]->_teme[j] != nullptr && nastavnici[i]->_teme[j]->_konacnaOcjena > 0) {
-//				brojZavrsnihRadova++;
-//				sumaSvihOcjenaZavrsnihRadova += nastavnici[i]->_teme[j]->_konacnaOcjena;
-//			}
-//		}
-//
-//		float prosjek = 0;
-//		if (brojZavrsnihRadova > 0)
-//			prosjek = sumaSvihOcjenaZavrsnihRadova / brojZavrsnihRadova;
-//
-//		if (prosjekMentora == 0 || prosjek < prosjekMentora) {
-//			prosjekMentora = prosjek;
-//			mentor = nastavnici[i];
-//		}
-//	}
-//
-//	if (mentor != nullptr) {
-//		float prosjek = 0;
-//		for (int i = 0; i < max_zavrsnih; i++) {
-//			if (mentor->_teme[i] != nullptr && mentor->_teme[i]->_konacnaOcjena >= minOcjena) {
-//				indeksStudenta = mentor->_teme[i]->_brojIndeksa;
-//				prosjekStudenta = mentor->_teme[i]->_konacnaOcjena;
-//				break;
-//			}
-//		}
-//	}
-//
-//	return make_tuple(indeksStudenta, prosjekStudenta, prosjekMentora);
-//}
+tuple<char*, float, float> PronadjiNajStudenta(Nastavnik* nastavnici[], int brojNastavnika, int minOcjena) {
+	float prosjekStudenta = 0;
+	float prosjekMentora = 0;
+	char* indeksStudenta = nullptr;
+
+	Nastavnik* mentor = nullptr;
+
+	for (int i = 0; i < brojNastavnika; i++) {
+
+		float sumaSvihOcjenaZavrsnihRadova = 0;
+		int brojZavrsnihRadova = 0;
+
+		for (int j = 0; j < max_zavrsnih; j++) {
+			if (nastavnici[i]->_teme[j] != nullptr && nastavnici[i]->_teme[j]->_konacnaOcjena > 0) {
+				brojZavrsnihRadova++;
+				sumaSvihOcjenaZavrsnihRadova += nastavnici[i]->_teme[j]->_konacnaOcjena;
+			}
+		}
+
+		float prosjek = 0;
+		if (brojZavrsnihRadova > 0)
+			prosjek = sumaSvihOcjenaZavrsnihRadova / brojZavrsnihRadova;
+
+		if (prosjekMentora == 0 || prosjek > prosjekMentora) {
+			prosjekMentora = prosjek;
+			mentor = nastavnici[i];
+		}
+	}
+
+	if (mentor != nullptr) {
+		float prosjek = 0;
+		for (int i = 0; i < max_zavrsnih; i++) {
+			if (mentor->_teme[i] != nullptr && mentor->_teme[i]->_konacnaOcjena >= minOcjena) {
+				indeksStudenta = mentor->_teme[i]->_brojIndeksa;
+				prosjekStudenta = mentor->_teme[i]->_konacnaOcjena;
+				break;
+			}
+		}
+	}
+
+	return make_tuple(indeksStudenta, prosjekStudenta, prosjekMentora);
+}
 
 int main() {
 	const int max = 2;
@@ -308,12 +308,12 @@ int main() {
 	//tom prilikom ostvario (odnosi se na studenta) ocjenu vecu od proslijedjene (npr. 8.2)*/
 	//parametri PronadjiNajStudenta: nastavnici, brojNastavnika, minimalnaKonacnaOcjena
 
-	//float prosjekStudenta = 0, prosjekMentora = 0;
-	//char* indeksStudenta;
+	float prosjekStudenta = 0, prosjekMentora = 0;
+	char* indeksStudenta;
 	
-	//tie(indeksStudenta, prosjekMentora, prosjekStudenta) = PronadjiNajStudenta(nastavnici, max, 8.2);
-	//if (indeksStudenta != nullptr)
-	//	cout << crt << indeksStudenta << " " << prosjekMentora << " " << prosjekStudenta << crt;
+	tie(indeksStudenta, prosjekMentora, prosjekStudenta) = PronadjiNajStudenta(nastavnici, max, 8.2);
+	if (indeksStudenta != nullptr)
+		cout << crt << indeksStudenta << " " << prosjekMentora << " " << prosjekStudenta << crt;
 
 	multimedijalni.Dealociraj(); podrsa_operaterima.Dealociraj(); analiza_sigurnosti.Dealociraj(); kriptografija.Dealociraj();
 	for (int i = 0; i < max; i++) {
