@@ -235,6 +235,8 @@ int main() {
 
 	KaratePojas pojasZuti, pojasNarandzasti, pojasZeleni;
 	pojasZuti.Unos(Zuti);
+	pojasNarandzasti.Unos(Narandzasti);
+	pojasZeleni.Unos(Zeleni);
 
 	/*Na osnovu vrijednosti primljenog parametra osigurati dodavanje novoizvrsene aktivnosti za potrebe stjecanja odredjenog pojasa. Broj aktivnosti nije ogranicen.
 	Identicna aktivnost se moze dodati jedino u slucaju kada je prethodna (identivna aktivnost po vrsti i datumu izvrsenja) imala ocjenu manju od 6.
